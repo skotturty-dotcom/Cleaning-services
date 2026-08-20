@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import ServicesSection from './components/ServicesSection'
-import Calculator from './components/Calculator'
-import BeforeAfterSlider from './components/BeforeAfterSlider'
-import WhyUs from './components/WhyUs'
-import CoverageAreas from './components/CoverageAreas'
-import Reviews from './components/Reviews'
-import FAQ from './components/FAQ'
-import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import BookingModal from './components/BookingModal'
 import FloatingCTA from './components/FloatingCTA'
 
+import HomePage from './pages/HomePage'
+import ServicesPage from './pages/ServicesPage'
+import ServiceDetailPage from './pages/ServiceDetailPage'
+import CalculatorPage from './pages/CalculatorPage'
+import BeforeAfterPage from './pages/BeforeAfterPage'
+import WhyUsPage from './pages/WhyUsPage'
+import CoveragePage from './pages/CoveragePage'
+import ReviewsPage from './pages/ReviewsPage'
+import FaqPage from './pages/FaqPage'
+import BookingPage from './pages/BookingPage'
+
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedService, setSelectedService] = useState(null)
-  const [calcSelection, setCalcSelection] = useState(null)
 
   const handleOpenBookingModal = (service = null) => {
     setSelectedService(service)
@@ -28,59 +31,82 @@ export default function App() {
     setSelectedService(null)
   }
 
-  const handleHeroCalculate = (selection) => {
-    setCalcSelection(selection)
-    const calcElem = document.getElementById('calculator')
-    if (calcElem) {
-      calcElem.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <div className="app-root" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Navbar onOpenBooking={() => handleOpenBookingModal()} />
-      
-      <main style={{ flexGrow: 1 }}>
-        <Hero 
-          onCalculatePrice={handleHeroCalculate}
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="app-root" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Navbar onOpenBooking={() => handleOpenBookingModal()} />
+        
+        <main style={{ flexGrow: 1 }}>
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <HomePage 
+                  onOpenBooking={() => handleOpenBookingModal()} 
+                  onSelectService={(srv) => handleOpenBookingModal(srv)}
+                />
+              } 
+            />
+            <Route 
+              path="/services" 
+              element={
+                <ServicesPage 
+                  onSelectService={(srv) => handleOpenBookingModal(srv)}
+                />
+              } 
+            />
+            <Route 
+              path="/services/:serviceId" 
+              element={
+                <ServiceDetailPage 
+                  onOpenBooking={() => handleOpenBookingModal()}
+                />
+              } 
+            />
+            <Route 
+              path="/calculator" 
+              element={<CalculatorPage />} 
+            />
+            <Route 
+              path="/before-after" 
+              element={<BeforeAfterPage />} 
+            />
+            <Route 
+              path="/why-us" 
+              element={<WhyUsPage />} 
+            />
+            <Route 
+              path="/coverage" 
+              element={<CoveragePage />} 
+            />
+            <Route 
+              path="/reviews" 
+              element={<ReviewsPage />} 
+            />
+            <Route 
+              path="/faq" 
+              element={<FaqPage />} 
+            />
+            <Route 
+              path="/booking" 
+              element={<BookingPage selectedService={selectedService} />} 
+            />
+          </Routes>
+        </main>
+
+        <Footer />
+
+        <BookingModal 
+          isOpen={modalOpen}
+          onClose={handleCloseModal}
+          selectedService={selectedService}
+        />
+
+        <FloatingCTA 
           onOpenBooking={() => handleOpenBookingModal()}
         />
-        
-        <ServicesSection 
-          onSelectService={(srv) => handleOpenBookingModal(srv)}
-        />
-        
-        <Calculator 
-          initialSelection={calcSelection}
-          onBookingSubmit={(details) => {
-            console.log('Booking submitted:', details)
-          }}
-        />
-
-        <BeforeAfterSlider />
-
-        <WhyUs />
-
-        <CoverageAreas />
-
-        <Reviews />
-
-        <FAQ />
-
-        <ContactSection />
-      </main>
-
-      <Footer />
-
-      <BookingModal 
-        isOpen={modalOpen}
-        onClose={handleCloseModal}
-        selectedService={selectedService}
-      />
-
-      <FloatingCTA 
-        onOpenBooking={() => handleOpenBookingModal()}
-      />
-    </div>
+      </div>
+    </BrowserRouter>
   )
 }

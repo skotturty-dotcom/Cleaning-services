@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Sparkles, Phone, Calendar, Menu, X, MapPin, ShieldCheck, ChevronDown } from 'lucide-react'
 
 export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedCity, setSelectedCity] = useState('Bengaluru')
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const cities = ['Bengaluru', 'Pune & PCMC', 'Mumbai', 'Delhi NCR', 'Hyderabad']
 
@@ -19,6 +22,13 @@ export default function Navbar({ onOpenBooking }) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleBookClick = () => {
+    if (onOpenBooking) {
+      onOpenBooking()
+    }
+    navigate('/booking')
+  }
 
   return (
     <>
@@ -98,7 +108,7 @@ export default function Navbar({ onOpenBooking }) {
         }}>
           
           {/* Logo */}
-          <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
             <div style={{
               width: '42px',
               height: '42px',
@@ -128,7 +138,7 @@ export default function Navbar({ onOpenBooking }) {
                 {selectedCity} Deep Clean Experts
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav Links */}
           <div className="desktop-links" style={{
@@ -137,13 +147,13 @@ export default function Navbar({ onOpenBooking }) {
             gap: '1.4rem',
             margin: '0 auto'
           }}>
-            <a href="#services" style={linkStyle}>Services</a>
-            <a href="#calculator" style={linkStyle}>Price Calculator</a>
-            <a href="#before-after" style={linkStyle}>Before & After</a>
-            <a href="#why-us" style={linkStyle}>Why Us</a>
-            <a href="#coverage" style={linkStyle}>Service Areas</a>
-            <a href="#reviews" style={linkStyle}>Reviews</a>
-            <a href="#faq" style={linkStyle}>FAQs</a>
+            <Link to="/services" style={linkStyle(location.pathname === '/services')}>Services</Link>
+            <Link to="/calculator" style={linkStyle(location.pathname === '/calculator')}>Price Calculator</Link>
+            <Link to="/before-after" style={linkStyle(location.pathname === '/before-after')}>Before & After</Link>
+            <Link to="/why-us" style={linkStyle(location.pathname === '/why-us')}>Why Us</Link>
+            <Link to="/coverage" style={linkStyle(location.pathname === '/coverage')}>Service Areas</Link>
+            <Link to="/reviews" style={linkStyle(location.pathname === '/reviews')}>Reviews</Link>
+            <Link to="/faq" style={linkStyle(location.pathname === '/faq')}>FAQs</Link>
           </div>
 
           {/* Right CTAs */}
@@ -156,7 +166,7 @@ export default function Navbar({ onOpenBooking }) {
             </a>
 
             {/* Book Online Button */}
-            <button onClick={onOpenBooking} className="btn-primary btn-sm nav-book-btn" style={{ whiteSpace: 'nowrap' }}>
+            <button onClick={handleBookClick} className="btn-primary btn-sm nav-book-btn" style={{ whiteSpace: 'nowrap' }}>
               <Calendar size={15} style={{ flexShrink: 0 }} />
               <span>Book Online</span>
             </button>
@@ -195,21 +205,21 @@ export default function Navbar({ onOpenBooking }) {
             <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: '600', paddingBottom: '0.5rem', borderBottom: '1px solid #f1f5f9' }}>
               📍 Selected Location: <strong style={{ color: '#0284c7' }}>{selectedCity}</strong>
             </div>
-            <a href="#services" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Services</a>
-            <a href="#calculator" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Price Calculator</a>
-            <a href="#before-after" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Before & After</a>
-            <a href="#why-us" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Why Choose Us</a>
-            <a href="#coverage" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Service Areas</a>
-            <a href="#reviews" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Customer Reviews</a>
-            <a href="#faq" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>FAQs</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Contact Us</a>
+            <Link to="/services" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Services</Link>
+            <Link to="/calculator" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Price Calculator</Link>
+            <Link to="/before-after" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Before & After</Link>
+            <Link to="/why-us" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Why Choose Us</Link>
+            <Link to="/coverage" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Service Areas</Link>
+            <Link to="/reviews" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Customer Reviews</Link>
+            <Link to="/faq" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>FAQs</Link>
+            <Link to="/booking" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>Contact & Booking</Link>
 
             <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
               <a href="tel:+910000000000" className="btn-secondary" style={{ flex: 1, justifyContent: 'center', fontSize: '0.875rem' }}>
                 <Phone size={16} color="#0284c7" />
                 <span>+91 00000 00000</span>
               </a>
-              <button onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }} className="btn-primary" style={{ flex: 1, justifyContent: 'center', fontSize: '0.875rem' }}>
+              <button onClick={() => { setMobileMenuOpen(false); handleBookClick(); }} className="btn-primary" style={{ flex: 1, justifyContent: 'center', fontSize: '0.875rem' }}>
                 <Calendar size={16} />
                 <span>Book Slot</span>
               </button>
@@ -235,15 +245,17 @@ export default function Navbar({ onOpenBooking }) {
   )
 }
 
-const linkStyle = {
+const linkStyle = (active) => ({
   fontFamily: 'var(--font-heading)',
   fontSize: '0.9rem',
-  fontWeight: '600',
-  color: '#334155',
+  fontWeight: active ? '700' : '600',
+  color: active ? '#0284c7' : '#334155',
   textDecoration: 'none',
   whiteSpace: 'nowrap',
-  transition: 'color 0.2s ease',
-}
+  transition: 'all 0.2s ease',
+  borderBottom: active ? '2px solid #0284c7' : '2px solid transparent',
+  paddingBottom: '2px'
+})
 
 const mobileLinkStyle = {
   fontSize: '0.95rem',

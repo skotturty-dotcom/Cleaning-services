@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Sparkles, Phone, Mail, MapPin, Heart, ShieldCheck } from 'lucide-react'
 
 export default function Footer() {
@@ -28,9 +29,11 @@ export default function Footer() {
               }}>
                 <Sparkles size={20} color="#ffffff" />
               </div>
-              <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--slate-900)', fontFamily: 'var(--font-heading)' }}>
-                My Cleaning <span style={{ color: 'var(--primary)' }}>Services</span>
-              </span>
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--slate-900)', fontFamily: 'var(--font-heading)' }}>
+                  My Cleaning <span style={{ color: 'var(--primary)' }}>Services</span>
+                </span>
+              </Link>
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--slate-600)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
               Bengaluru's premier professional home deep cleaning service provider. Delivering mechanized German single-disc floor scrubbing, eco-friendly sanitization, and 100% satisfaction guarantees.
@@ -46,12 +49,12 @@ export default function Footer() {
               Our Services
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.875rem' }}>
-              <li><a href="#services" style={footerLinkStyle}>Full Home Deep Cleaning</a></li>
-              <li><a href="#services" style={footerLinkStyle}>Kitchen Deep Degreasing</a></li>
-              <li><a href="#services" style={footerLinkStyle}>Bathroom Deep Sanitization</a></li>
-              <li><a href="#services" style={footerLinkStyle}>Sofa & Upholstery Shampooing</a></li>
-              <li><a href="#services" style={footerLinkStyle}>Overhead & Sump Water Tank Cleaning</a></li>
-              <li><a href="#services" style={footerLinkStyle}>Office & Commercial Deep Cleaning</a></li>
+              <li><Link to="/services/full-home" style={footerLinkStyle}>Full Home Deep Cleaning</Link></li>
+              <li><Link to="/services/kitchen" style={footerLinkStyle}>Kitchen Deep Degreasing</Link></li>
+              <li><Link to="/services/bathroom" style={footerLinkStyle}>Bathroom Deep Sanitization</Link></li>
+              <li><Link to="/services/sofa" style={footerLinkStyle}>Sofa & Upholstery Shampooing</Link></li>
+              <li><Link to="/services/tank" style={footerLinkStyle}>Overhead & Sump Water Tank Cleaning</Link></li>
+              <li><Link to="/services/office" style={footerLinkStyle}>Office & Commercial Deep Cleaning</Link></li>
             </ul>
           </div>
 
@@ -61,12 +64,12 @@ export default function Footer() {
               Bengaluru Service Areas
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.875rem' }}>
-              <li><a href="#coverage" style={footerLinkStyle}>Indiranagar Deep Cleaning</a></li>
-              <li><a href="#coverage" style={footerLinkStyle}>Koramangala & HSR Layout</a></li>
-              <li><a href="#coverage" style={footerLinkStyle}>Whitefield & ITPL Cleaning</a></li>
-              <li><a href="#coverage" style={footerLinkStyle}>Electronic City & Bellandur</a></li>
-              <li><a href="#coverage" style={footerLinkStyle}>Jayanagar & JP Nagar</a></li>
-              <li><a href="#coverage" style={footerLinkStyle}>Hebbal & Yelahanka</a></li>
+              <li><Link to="/coverage" style={footerLinkStyle}>Indiranagar Deep Cleaning</Link></li>
+              <li><Link to="/coverage" style={footerLinkStyle}>Koramangala & HSR Layout</Link></li>
+              <li><Link to="/coverage" style={footerLinkStyle}>Whitefield & ITPL Cleaning</Link></li>
+              <li><Link to="/coverage" style={footerLinkStyle}>Electronic City & Bellandur</Link></li>
+              <li><Link to="/coverage" style={footerLinkStyle}>Jayanagar & JP Nagar</Link></li>
+              <li><Link to="/coverage" style={footerLinkStyle}>Hebbal & Yelahanka</Link></li>
             </ul>
           </div>
 
