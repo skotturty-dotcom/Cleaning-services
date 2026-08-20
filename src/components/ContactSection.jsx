@@ -162,68 +162,69 @@ export default function ContactSection() {
 
           {/* Right Column: Quick Form */}
           <div style={{
-            background: 'rgba(255, 255, 255, 0.04)',
-            backdropFilter: 'blur(16px)',
+            background: '#ffffff',
             borderRadius: '24px',
             padding: '2.25rem',
-            border: '1px solid rgba(255, 255, 255, 0.12)'
+            boxShadow: 'var(--shadow-xl)',
+            border: '1px solid var(--slate-200)',
+            color: 'var(--slate-900)'
           }}>
-            <h3 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+            <h3 style={{ color: 'var(--slate-900)', fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.5rem' }}>
               Request Callback / Call Back Offer
             </h3>
-            <p style={{ fontSize: '0.875rem', color: '#94a3b8', marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '0.875rem', color: 'var(--slate-600)', marginBottom: '1.5rem' }}>
               Fill in your contact details below and our cleaning supervisor will call you back within 15 minutes!
             </p>
 
             {submitted ? (
               <div style={{
-                background: 'rgba(16, 185, 129, 0.15)',
-                border: '1px solid rgba(16, 185, 129, 0.4)',
+                background: '#f0fdf4',
+                border: '1px solid #bbf7d0',
                 borderRadius: '16px',
                 padding: '2rem',
                 textAlign: 'center'
               }}>
-                <Sparkles size={36} color="#34d399" style={{ margin: '0 auto 1rem auto' }} />
-                <h4 style={{ color: '#ffffff', fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+                <Sparkles size={36} color="var(--accent)" style={{ margin: '0 auto 1rem auto' }} />
+                <h4 style={{ color: 'var(--slate-900)', fontSize: '1.25rem', fontWeight: '700', marginBottom: '0.5rem' }}>
                   Inquiry Sent Successfully!
                 </h4>
-                <p style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>
+                <p style={{ color: 'var(--slate-600)', fontSize: '0.9rem' }}>
                   Our team has received your request. We opened WhatsApp to confirm your slot.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.825rem', color: '#cbd5e1', marginBottom: '0.35rem' }}>Full Name</label>
+                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: '600', color: 'var(--slate-700)', marginBottom: '0.35rem' }}>Full Name</label>
                   <input 
                     type="text"
                     required
                     placeholder="e.g. Sahit"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    style={darkInputStyle}
+                    style={lightInputStyle}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.825rem', color: '#cbd5e1', marginBottom: '0.35rem' }}>Mobile Number*</label>
+                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: '600', color: 'var(--slate-700)', marginBottom: '0.35rem' }}>Mobile Number*</label>
                   <input 
                     type="tel"
                     required
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    style={darkInputStyle}
+                    style={lightInputStyle}
                   />
                 </div>
 
                 <div className="contact-form-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.825rem', color: '#cbd5e1', marginBottom: '0.35rem' }}>Service Required</label>
+                    <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: '600', color: 'var(--slate-700)', marginBottom: '0.35rem' }}>Service Required</label>
                     <select 
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      style={darkInputStyle}
+                      style={lightInputStyle}
                     >
                       <option value="Full Home Deep Cleaning">Full Home Cleaning</option>
                       <option value="Kitchen Degreasing">Kitchen Degreasing</option>
@@ -234,25 +235,25 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.825rem', color: '#cbd5e1', marginBottom: '0.35rem' }}>Area in Bengaluru</label>
+                    <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: '600', color: 'var(--slate-700)', marginBottom: '0.35rem' }}>Area in Bengaluru</label>
                     <input 
                       type="text"
                       placeholder="e.g. Indiranagar"
                       value={formData.locality}
                       onChange={(e) => setFormData({ ...formData, locality: e.target.value })}
-                      style={darkInputStyle}
+                      style={lightInputStyle}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.825rem', color: '#cbd5e1', marginBottom: '0.35rem' }}>Special Instructions (Optional)</label>
+                  <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: '600', color: 'var(--slate-700)', marginBottom: '0.35rem' }}>Special Instructions (Optional)</label>
                   <textarea 
                     rows="2"
                     placeholder="e.g. Need cleaning after flat painting..."
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    style={{ ...darkInputStyle, resize: 'none' }}
+                    style={{ ...lightInputStyle, resize: 'none' }}
                   ></textarea>
                 </div>
 
@@ -281,13 +282,13 @@ export default function ContactSection() {
   )
 }
 
-const darkInputStyle = {
+const lightInputStyle = {
   width: '100%',
   padding: '0.75rem 0.9rem',
   borderRadius: '10px',
-  border: '1px solid rgba(255, 255, 255, 0.2)',
-  background: 'rgba(255, 255, 255, 0.08)',
-  color: '#ffffff',
+  border: '1px solid var(--slate-300)',
+  background: '#ffffff',
+  color: 'var(--slate-800)',
   fontSize: '0.9rem',
   outline: 'none',
   fontFamily: 'inherit'
