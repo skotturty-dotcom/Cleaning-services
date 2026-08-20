@@ -288,7 +288,7 @@ export default function Calculator({ initialSelection, onBookingSubmit }) {
                 <span>Preferred Slot & Locality in Bengaluru</span>
               </label>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+              <div className="calc-input-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
                   <label style={{ fontSize: '0.8rem', color: 'var(--slate-600)', marginBottom: '0.25rem', display: 'block' }}>Date</label>
                   <input 
@@ -313,7 +313,7 @@ export default function Calculator({ initialSelection, onBookingSubmit }) {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+              <div className="calc-input-3col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
                 <div>
                   <label style={{ fontSize: '0.8rem', color: 'var(--slate-600)', marginBottom: '0.25rem', display: 'block' }}>Your Name</label>
                   <input 
@@ -484,6 +484,10 @@ export default function Calculator({ initialSelection, onBookingSubmit }) {
       <style>{`
         @media (max-width: 992px) {
           .calculator-layout { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 640px) {
+          .calc-input-2col { grid-template-columns: 1fr !important; }
+          .calc-input-3col { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

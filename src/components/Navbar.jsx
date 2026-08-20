@@ -147,16 +147,16 @@ export default function Navbar({ onOpenBooking }) {
           </div>
 
           {/* Right CTAs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
             
-            {/* Phone Button with 0000 format */}
-            <a href="tel:+910000000000" className="btn-secondary btn-sm" style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            {/* Phone Button */}
+            <a href="tel:+910000000000" className="btn-secondary btn-sm nav-phone-btn" style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}>
               <Phone size={15} color="#0284c7" style={{ flexShrink: 0 }} />
               <span style={{ fontWeight: '700', letterSpacing: '0.02em' }}>+91 00000 00000</span>
             </a>
 
             {/* Book Online Button */}
-            <button onClick={onOpenBooking} className="btn-primary btn-sm" style={{ whiteSpace: 'nowrap' }}>
+            <button onClick={onOpenBooking} className="btn-primary btn-sm nav-book-btn" style={{ whiteSpace: 'nowrap' }}>
               <Calendar size={15} style={{ flexShrink: 0 }} />
               <span>Book Online</span>
             </button>
@@ -225,6 +225,10 @@ export default function Navbar({ onOpenBooking }) {
         }
         @media (max-width: 768px) {
           .nav-top-right { display: none !important; }
+          .nav-phone-btn { display: none !important; }
+        }
+        @media (max-width: 520px) {
+          .nav-book-btn { display: none !important; }
         }
       `}</style>
     </>

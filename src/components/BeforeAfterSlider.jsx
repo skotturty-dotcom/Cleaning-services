@@ -1,9 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Sparkles, SlidersHorizontal, ArrowLeftRight, CheckCircle2 } from 'lucide-react'
 
 export default function BeforeAfterSlider() {
   const [sliderPosition, setSliderPosition] = useState(50)
   const [activeTab, setActiveTab] = useState('kitchen')
+  const [containerWidth, setContainerWidth] = useState(960)
+  const containerRef = useRef(null)
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.clientWidth)
+      }
+    }
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [])
 
   const transformations = {
     kitchen: {
@@ -82,9 +95,10 @@ export default function BeforeAfterSlider() {
         }}>
           {/* Visual Canvas Container */}
           <div 
+            ref={containerRef}
             style={{
               position: 'relative',
-              height: '420px',
+              height: 'clamp(260px, 45vw, 420px)',
               width: '100%',
               overflow: 'hidden',
               userSelect: 'none',
@@ -124,9 +138,8 @@ export default function BeforeAfterSlider() {
                   position: 'absolute',
                   top: 0,
                   left: 0,
-                  width: '960px', // matches parent width
-                  maxHeight: 'none',
-                  height: '420px',
+                  width: `${containerWidth}px`,
+                  height: '100%',
                   objectFit: 'cover',
                   filter: 'sepia(0.3) contrast(1.1) brightness(0.85)' // accentuates "dirty/stained" look
                 }}

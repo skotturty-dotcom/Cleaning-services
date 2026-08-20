@@ -217,7 +217,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="contact-form-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.825rem', color: '#cbd5e1', marginBottom: '0.35rem' }}>Service Required</label>
                     <select 
@@ -272,6 +272,9 @@ export default function ContactSection() {
       <style>{`
         @media (max-width: 992px) {
           .contact-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 640px) {
+          .contact-form-2col { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

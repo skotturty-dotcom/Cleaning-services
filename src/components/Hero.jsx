@@ -141,13 +141,17 @@ export default function Hero({ onCalculatePrice, onOpenBooking }) {
             </div>
 
             {/* Quick Metrics */}
-            <div style={{
-              display: 'flex',
-              gap: '2.5rem',
-              marginTop: '3rem',
-              paddingTop: '2rem',
-              borderTop: '1px solid rgba(255, 255, 255, 0.1)'
-            }}>
+            <div 
+              className="hero-metrics"
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '1.75rem',
+                marginTop: '3rem',
+                paddingTop: '2rem',
+                borderTop: '1px solid rgba(255, 255, 255, 0.1)'
+              }}
+            >
               <div>
                 <div style={{ fontSize: '1.8rem', fontWeight: '800', color: '#38bdf8', fontFamily: 'var(--font-heading)' }}>5,000+</div>
                 <div style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Homes Cleaned in Bengaluru</div>

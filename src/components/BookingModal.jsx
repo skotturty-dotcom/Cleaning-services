@@ -134,7 +134,7 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="modal-input-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div>
               <label style={modalLabelStyle}>Your Name</label>
               <input 
@@ -158,7 +158,7 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="modal-input-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div>
               <label style={modalLabelStyle}>Preferred Date</label>
               <input 
@@ -220,6 +220,12 @@ export default function BookingModal({ isOpen, onClose, selectedService }) {
           </button>
         </form>
       </div>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .modal-input-2col { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   )
 }
