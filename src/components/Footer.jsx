@@ -3,7 +3,7 @@ import { Sparkles, Phone, Mail, MapPin, Heart, ShieldCheck } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#0a0f1d', color: '#cbd5e1', paddingTop: '4rem', paddingBottom: '6rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <footer style={{ background: '#ffffff', color: 'var(--slate-700)', paddingTop: '4rem', paddingBottom: '6rem', borderTop: '1px solid var(--slate-200)' }}>
       <div className="container">
         
         {/* Main Footer Grid */}
@@ -28,21 +28,21 @@ export default function Footer() {
               }}>
                 <Sparkles size={20} color="#ffffff" />
               </div>
-              <span style={{ fontSize: '1.25rem', fontWeight: '800', color: '#ffffff', fontFamily: 'var(--font-heading)' }}>
-                My Cleaning <span style={{ color: '#38bdf8' }}>Services</span>
+              <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--slate-900)', fontFamily: 'var(--font-heading)' }}>
+                My Cleaning <span style={{ color: 'var(--primary)' }}>Services</span>
               </span>
             </div>
-            <p style={{ fontSize: '0.875rem', color: '#94a3b8', lineHeight: '1.6', marginBottom: '1.25rem' }}>
+            <p style={{ fontSize: '0.875rem', color: 'var(--slate-600)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
               Bengaluru's premier professional home deep cleaning service provider. Delivering mechanized German single-disc floor scrubbing, eco-friendly sanitization, and 100% satisfaction guarantees.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: '#34d399' }}>
-              <ShieldCheck size={16} /> Verified Cleaning Crew & Safe Non-Toxic Products
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: 'var(--accent-hover)', fontWeight: '600' }}>
+              <ShieldCheck size={16} color="var(--accent)" /> Verified Cleaning Crew & Safe Non-Toxic Products
             </div>
           </div>
 
           {/* Col 2: Deep Cleaning Services */}
           <div>
-            <h4 style={{ color: '#ffffff', fontSize: '1rem', fontWeight: '700', marginBottom: '1.25rem' }}>
+            <h4 style={{ color: 'var(--slate-900)', fontSize: '1rem', fontWeight: '700', marginBottom: '1.25rem' }}>
               Our Services
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.875rem' }}>
@@ -57,7 +57,7 @@ export default function Footer() {
 
           {/* Col 3: Popular Bengaluru Areas */}
           <div>
-            <h4 style={{ color: '#ffffff', fontSize: '1rem', fontWeight: '700', marginBottom: '1.25rem' }}>
+            <h4 style={{ color: 'var(--slate-900)', fontSize: '1rem', fontWeight: '700', marginBottom: '1.25rem' }}>
               Bengaluru Service Areas
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.875rem' }}>
@@ -72,23 +72,23 @@ export default function Footer() {
 
           {/* Col 4: Contact & Hours */}
           <div>
-            <h4 style={{ color: '#ffffff', fontSize: '1rem', fontWeight: '700', marginBottom: '1.25rem' }}>
+            <h4 style={{ color: 'var(--slate-900)', fontSize: '1rem', fontWeight: '700', marginBottom: '1.25rem' }}>
               Contact Hub
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', fontSize: '0.875rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <Phone size={16} color="#38bdf8" />
-                <a href="tel:+910000000000" style={{ color: '#38bdf8', textDecoration: 'none', fontWeight: '700' }}>+91 00000 00000</a>
+                <Phone size={16} color="var(--primary)" />
+                <a href="tel:+910000000000" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: '700' }}>+91 00000 00000</a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <Mail size={16} color="#38bdf8" />
-                <span>support@mycleaningservicesbengaluru.com</span>
+                <Mail size={16} color="var(--primary)" />
+                <span style={{ color: 'var(--slate-700)' }}>support@mycleaningservicesbengaluru.com</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                <MapPin size={16} color="#38bdf8" style={{ marginTop: '3px', flexShrink: 0 }} />
-                <span>Main Office & Commercial Hub, City Center</span>
+                <MapPin size={16} color="var(--primary)" style={{ marginTop: '3px', flexShrink: 0 }} />
+                <span style={{ color: 'var(--slate-700)' }}>Main Office & Commercial Hub, City Center</span>
               </div>
-              <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.5rem' }}>
+              <div style={{ fontSize: '0.8rem', color: 'var(--slate-600)', marginTop: '0.5rem' }}>
                 ⏰ Working Hours: 8:00 AM - 9:00 PM (Open 7 Days)
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function Footer() {
 
         {/* Bottom copyright line */}
         <div style={{
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          borderTop: '1px solid var(--slate-200)',
           paddingTop: '2rem',
           display: 'flex',
           justifyContent: 'space-between',
@@ -106,7 +106,7 @@ export default function Footer() {
           flexWrap: 'wrap',
           gap: '1rem',
           fontSize: '0.8rem',
-          color: '#64748b'
+          color: 'var(--slate-500)'
         }}>
           <div>
             © {new Date().getFullYear()} My Cleaning Services Bengaluru. All Rights Reserved.
@@ -122,7 +122,7 @@ export default function Footer() {
 }
 
 const footerLinkStyle = {
-  color: '#94a3b8',
+  color: 'var(--slate-600)',
   textDecoration: 'none',
   transition: 'color 0.2s ease'
 }
